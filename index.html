@@ -1,269 +1,609 @@
 <!DOCTYPE HTML>
-<!--
-	Directive by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Ashraful Islam Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+  <title>Ashraful Islam | Software Developer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pzjw8f+ua7Kw1TIq+phkR8W8kldRSYAKaZRpM9dBa0uUjDk5hZ1sIfB1eZ+PYxFPQ7xq1PC05ns7Qy+Kx2oj8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #0a0a0a;
+    }
+    
+    /* Animated gradient background */
+    .hero-bg {
+      background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533a7d);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    #header {
+      text-align: center;
+      color: white;
+      z-index: 2;
+      position: relative;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    #header h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #00f5ff, #ff00ff, #00ff00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes textGlow {
+      from { filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5)); }
+      to { filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.8)); }
+    }
+    
+    .subtitle {
+      font-size: 1.4rem;
+      color: #b0b0b0;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, #00f5ff, #0080ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.4);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(45deg, #333, #555);
+      border: 2px solid #00f5ff;
+    }
+    
+    .btn-secondary:hover {
+      background: linear-gradient(45deg, #00f5ff, #0080ff);
+      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.4);
+    }
+    
+    /* Main content */
+    .content-section {
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+      padding: 5rem 2rem;
+      position: relative;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
+      border-color: #00f5ff;
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00f5ff, #ff00ff);
+    }
+    
+    .skill-card h3 {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-card p {
+      color: #b0b0b0;
+      line-height: 1.6;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 245, 255, 0.15);
+    }
+    
+    .project-card h4 {
+      color: white;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-card p {
+      color: #b0b0b0;
+      margin-bottom: 1rem;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tech-tag {
+      background: rgba(0, 245, 255, 0.2);
+      color: #00f5ff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(0, 245, 255, 0.3);
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .project-link {
+      color: #00f5ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .project-link:hover {
+      color: #ff00ff;
+      transform: translateX(5px);
+    }
+    
+    /* Contact section */
+    .contact-section {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      padding: 5rem 2rem;
+    }
+    
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #00f5ff;
+      box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #888;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .social-link {
+      color: white;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      color: #00f5ff;
+      transform: translateY(-3px);
+    }
+    
+    /* Footer */
+    footer {
+      background: #0a0a0a;
+      color: #888;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      #header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated particles -->
+  <div class="particle" style="width: 4px; height: 4px; left: 10%; animation-delay: 0s; animation-duration: 15s;"></div>
+  <div class="particle" style="width: 6px; height: 6px; left: 20%; animation-delay: 2s; animation-duration: 18s;"></div>
+  <div class="particle" style="width: 3px; height: 3px; left: 30%; animation-delay: 4s; animation-duration: 20s;"></div>
+  <div class="particle" style="width: 5px; height: 5px; left: 40%; animation-delay: 6s; animation-duration: 16s;"></div>
+  <div class="particle" style="width: 4px; height: 4px; left: 50%; animation-delay: 8s; animation-duration: 19s;"></div>
+  <div class="particle" style="width: 6px; height: 6px; left: 60%; animation-delay: 10s; animation-duration: 17s;"></div>
+  <div class="particle" style="width: 3px; height: 3px; left: 70%; animation-delay: 12s; animation-duration: 21s;"></div>
+  <div class="particle" style="width: 5px; height: 5px; left: 80%; animation-delay: 14s; animation-duration: 15s;"></div>
+  <div class="particle" style="width: 4px; height: 4px; left: 90%; animation-delay: 16s; animation-duration: 18s;"></div>
 
-		<!-- Header -->
-			<div id="header">
-				<span class="logo icon fa-paper-plane"></span>
-				<h1>Ashraful Islam</h1>
-				<p>CS Major at UTD (Richardson, TX)</a>
-				<br />
-				My goal is to contribute to the greater community through excellence in leadership, service, and innovative IT solutions.</p>
-			</div>
+  <!-- Hero Section -->
+  <div class="hero-bg">
+    <div id="header">
+      <div class="logo">
+        <i class="fas fa-code"></i>
+      </div>
+      <h1>Ashraful Islam</h1>
+      <p class="subtitle">Software Developer Intern @ Gainwell Technologies<br />
+        CS Major @ UTD · AI Fellow @ Headstarter AI<br />
+        Passionate about Healthcare IT & AI/ML Solutions</p>
+      
+      <div class="cta-buttons">
+        <a href="#projects" class="btn">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </div>
 
-		<!-- Main -->
-			<div id="main">
+  <!-- Skills Section -->
+  <div class="content-section" id="skills">
+    <div class="container">
+      <h2 class="section-title">What I Do</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3><i class="fas fa-heartbeat"></i> Healthcare IT</h3>
+          <p>Developing innovative solutions to improve healthcare through technology at Gainwell Technologies. Focus on building systems that enhance patient care and streamline healthcare operations.</p>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+          <p>Creating intelligent applications through AI Fellowship at Headstarter AI. Passionate about leveraging machine learning to solve real-world problems and deliver impactful solutions.</p>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fas fa-code"></i> Full-Stack Development</h3>
+          <p>Building end-to-end applications with modern technologies. Experience across the full stack from responsive frontends to robust backend systems and database design.</p>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fas fa-mobile-alt"></i> UI/UX Design</h3>
+          <p>Creating intuitive and visually appealing user interfaces. Combining technical skills with design thinking to build experiences that users love and businesses need.</p>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fas fa-users"></i> Leadership & Service</h3>
+          <p>Committed to utilizing my talents to benefit society through excellent leadership, service, and innovative IT solutions. Always looking for ways to make a positive impact.</p>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fas fa-graduation-cap"></i> Continuous Learning</h3>
+          <p>Lifelong learner constantly exploring new technologies and methodologies. Currently pursuing Computer Science at UTD with focus on software systems and intelligent systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-				<header class="major container medium">
-					<h2>Headstarter AI Software Engineer Fellow Here!
-					<br />
-					Coding to
-					<br />
-					break the universe ... </h2>
-					<!--
-					<p>Tellus erat mauris ipsum fermentum<br />
-					etiam vivamus nunc nibh morbi.</p>
-					-->
-				</header>
+  <!-- Projects Section -->
+  <div class="content-section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>Healthcare IT Solutions</h4>
+          <p>Developing innovative healthcare technology solutions during my internship at Gainwell Technologies, focusing on improving patient care and operational efficiency.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Healthcare IT</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Cloud</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">Learn More →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <h4>AI-Powered Applications</h4>
+          <p>Building cutting-edge AI applications through Headstarter AI Fellowship, delivering real-world impact through intelligent automation and machine learning.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">AI/ML</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">React</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/AI01010" class="project-link">View Code →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <h4>Full-Stack Web Applications</h4>
+          <p>Developing modern web applications with focus on user experience, performance, and scalability. From concept to deployment.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">AWS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/AI01010" class="project-link">Explore →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-				<div class="box alt container">
-					<section class="feature left">
-						<a href="#" class="image icon solid fa-signal"><img src="pic01.jpg" alt="" /></a>
-						<div class="content">
-							<h3>Software Engineer Fellow</h3>
-							<p> Joined a fellowship in 2024 for software engineering at Headstarter AI!</p>
-						</div>
-					</section>
-					<section class="feature right">
-						<a href="#" class="image icon solid fa-code"><img src="pic02.jpg" alt="" /></a>
-						<div class="content">
-							<h3>CS @UTD</h3>
-							<p>I'm a CS major at UTD currently in my 2nd year. Have completed CS and computer architecture classes</p>
-						</div>
-					</section>
-					<section class="feature left">
-						<a href="#" class="image icon solid fa-mobile-alt"><img src="pic03.jpg" alt="" /></a>
-						<div class="content">
-							<h3>Graphic Design</h3>
-							<p>I also do Graphic Design work on the side.</p>
-						</div>
-					</section>
-				</div>
+  <!-- Contact Section -->
+  <div class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <p style="text-align: center; color: #b0b0b0; margin-bottom: 3rem; font-size: 1.2rem;">
+        Ready to collaborate on innovative projects or discuss opportunities? I'd love to hear from you!
+      </p>
+      
+      <form class="contact-form" method="post" action="#">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+        </div>
+      </form>
 
-				<!--
-				<div class="box container">
-					<header>
-						<h2>A lot of generic stuff</h2>
-					</header>
-					<section>
-						<header>
-							<h3>Paragraph</h3>
-							<p>This is the subtitle for this particular heading</p>
-						</header>
-						<p>Phasellus nisl nisl, varius id <sup>porttitor sed pellentesque</sup> ac orci. Pellentesque
-						habitant <strong>strong</strong> tristique <b>bold</b> et netus <i>italic</i> malesuada <em>emphasized</em> ac turpis egestas. Morbi
-						leo suscipit ut. Praesent <sub>id turpis vitae</sub> turpis pretium ultricies. Vestibulum sit
-						amet risus elit.</p>
-					</section>
-					<section>
-						<header>
-							<h3>Blockquote</h3>
-						</header>
-						<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget.
-						tempus euismod. Vestibulum ante ipsum primis in faucibus.</blockquote>
-					</section>
-					<section>
-						<header>
-							<h3>Divider</h3>
-						</header>
-						<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra
-						ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci
-						facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-						tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-						posuere cubilia.</p>
-						<hr />
-						<p>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra
-						ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel. Praesent nec orci
-						facilisis leo magna. Cras sit amet urna eros, id egestas urna. Quisque aliquam
-						tempus euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-						posuere cubilia.</p>
-					</section>
-					<section>
-						<header>
-							<h3>Unordered List</h3>
-						</header>
-						<ul class="default">
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						</ul>
-					</section>
-					<section>
-						<header>
-							<h3>Ordered List</h3>
-						</header>
-						<ol class="default">
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-							<li>Donec consectetur vestibulum dolor et pulvinar. Etiam vel felis enim, at viverra ligula. Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</li>
-						</ol>
-					</section>
-					<section>
-						<header>
-							<h3>Table</h3>
-						</header>
-						<div class="table-wrapper">
-							<table class="default">
-								<thead>
-									<tr>
-										<th>ID</th>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>45815</td>
-										<td>Something</td>
-										<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>24524</td>
-										<td>Nothing</td>
-										<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>45815</td>
-										<td>Something</td>
-										<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>24524</td>
-										<td>Nothing</td>
-										<td>Ut porttitor sagittis lorem, quis eleifend nisi ornare vel.</td>
-										<td>19.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="3"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</section>
-					<section>
-						<header>
-							<h3>Form</h3>
-						</header>
-						<form method="post" action="#">
-							<div class="row">
-								<div class="col-6 col-12-mobilep">
-									<label for="name">Name</label>
-									<input class="text" type="text" name="name" id="name" value="" placeholder="John Doe" />
-								</div>
-								<div class="col-6 col-12-mobilep">
-									<label for="email">Email</label>
-									<input class="text" type="text" name="email" id="email" value="" placeholder="johndoe@domain.tld" />
-								</div>
-								<div class="col-12">
-									<label for="subject">Subject</label>
-									<input class="text" type="text" name="subject" id="subject" value="" placeholder="Enter your subject" />
-								</div>
-								<div class="col-12">
-									<label for="subject">Message</label>
-									<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
-								</div>
-								<div class="col-12">
-									<ul class="actions special">
-										<li><input type="submit" value="Send" /></li>
-										<li><input type="reset" value="Reset" class="alt" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</section>
-				</div>
-				-->
+      <div class="social-links">
+        <a href="https://github.com/AI01010" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ashraful-islam-cs/" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:ashraful@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
 
-				<footer class="major container medium">
-					<h3>Thank you!</h3>
-					<p>For visiting my landing page. Visit my LinkedIn here: <a href="https://www.linkedin.com/in/ashraful-islam-cs/">LINKEDIN</a></p>
-					<ul class="actions special">
-						<li><a href="#" class="button">TOP</a></li>
-					</ul>
-				</footer>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Ashraful Islam. All rights reserved. | Designed with ❤️ for innovation</p>
+    </div>
+  </footer>
 
-			</div>
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-		<!-- Footer -->
-			<div id="footer">
-				<div class="container medium">
+    // Add scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
 
-					<header class="major last">
-						<h2>Questions or comments?</h2>
-					</header>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
 
-					<p>Send them below: </p>
+    // Observe all cards for animation
+    document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.6s ease';
+      observer.observe(card);
+    });
 
-					<form method="post" action="#">
-						<div class="row">
-							<div class="col-6 col-12-mobilep">
-								<input type="text" name="name" placeholder="Name" />
-							</div>
-							<div class="col-6 col-12-mobilep">
-								<input type="email" name="email" placeholder="Email" />
-							</div>
-							<div class="col-12">
-								<textarea name="message" placeholder="Message" rows="6"></textarea>
-							</div>
-							<div class="col-12">
-								<ul class="actions special">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div>
-						</div>
-					</form>
+    // Form submission handler
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Simple form validation
+      if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Simulate form submission
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        submitBtn.textContent = 'Message Sent!';
+        submitBtn.style.background = 'linear-gradient(45deg, #00ff00, #00cc00)';
+        
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = 'linear-gradient(45deg, #00f5ff, #0080ff)';
+          submitBtn.disabled = false;
+          this.reset();
+        }, 2000);
+      }, 1000);
+    });
 
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-					</ul>
+    // Add dynamic particle generation
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.cssText = `
+        position: fixed;
+        width: ${Math.random() * 4 + 2}px;
+        height: ${Math.random() * 4 + 2}px;
+        left: ${Math.random() * 100}%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: float ${Math.random() * 10 + 15}s infinite linear;
+        animation-delay: ${Math.random() * 5}s;
+      `;
+      document.body.appendChild(particle);
+      
+      setTimeout(() => {
+        particle.remove();
+      }, 25000);
+    }
 
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-				</div>
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    // Generate particles periodically
+    setInterval(createParticle, 3000);
+  </script>
+</body>
 </html>
