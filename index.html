@@ -1,10 +1,13 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ashraful Islam | Software Developer</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pzjw8f+ua7Kw1TIq+phkR8W8kldRSYAKaZRpM9dBa0uUjDk5hZ1sIfB1eZ+PYxFPQ7xq1PC05ns7Qy+Kx2oj8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -12,245 +15,330 @@
       box-sizing: border-box;
     }
     
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #0a0a0a;
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #111111;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --accent-cyan: #00d4ff;
+      --accent-blue: #0080ff;
+      --border-subtle: rgba(255, 255, 255, 0.08);
     }
     
-    /* Animated gradient background */
-    .hero-bg {
-      background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533a7d);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
+    body {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Hero Section */
+    .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     }
     
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* Floating particles */
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      animation: float 20s infinite linear;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-    }
-    
-    #header {
-      text-align: center;
-      color: white;
-      z-index: 2;
-      position: relative;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .logo {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    #header h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(45deg, #00f5ff, #ff00ff, #00ff00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: textGlow 3s ease-in-out infinite alternate;
-    }
-    
-    @keyframes textGlow {
-      from { filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5)); }
-      to { filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.8)); }
-    }
-    
-    .subtitle {
-      font-size: 1.4rem;
-      color: #b0b0b0;
-      margin-bottom: 2rem;
-      font-weight: 300;
-    }
-    
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    
-    .btn {
-      padding: 1rem 2rem;
-      background: linear-gradient(45deg, #00f5ff, #0080ff);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.4);
-    }
-    
-    .btn-secondary {
-      background: linear-gradient(45deg, #333, #555);
-      border: 2px solid #00f5ff;
-    }
-    
-    .btn-secondary:hover {
-      background: linear-gradient(45deg, #00f5ff, #0080ff);
-      box-shadow: 0 10px 30px rgba(0, 245, 255, 0.4);
-    }
-    
-    /* Main content */
-    .content-section {
-      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
-      padding: 5rem 2rem;
-      position: relative;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      text-align: center;
-      color: white;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      font-weight: 700;
-    }
-    
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-    
-    .skill-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .skill-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
-      border-color: #00f5ff;
-    }
-    
-    .skill-card::before {
+    .hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #00f5ff, #ff00ff);
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 50%, rgba(0, 128, 255, 0.08) 0%, transparent 50%);
+      pointer-events: none;
     }
     
-    .skill-card h3 {
-      color: white;
-      font-size: 1.5rem;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-content {
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-label {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
       margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+    
+    .hero-subtitle strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    
+    .cta-group {
       display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
     }
     
-    .skill-card p {
-      color: #b0b0b0;
-      line-height: 1.6;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: var(--text-primary);
+      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
     }
     
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0, 212, 255, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border-subtle);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 212, 255, 0.05);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .social-link {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      background: rgba(0, 212, 255, 0.05);
+      transform: translateY(-3px);
+    }
+    
+    /* About Section */
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+    
+    .section-header {
+      text-align: center;
       margin-bottom: 4rem;
     }
     
-    .project-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
+    .section-label {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Experience Grid */
+    .experience-grid {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .experience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
       padding: 2rem;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
     
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 245, 255, 0.15);
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
     
-    .project-card h4 {
-      color: white;
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
+    .experience-card:hover::before {
+      transform: scaleX(1);
     }
     
-    .project-card p {
-      color: #b0b0b0;
-      margin-bottom: 1rem;
+    .experience-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.15);
     }
     
-    .tech-stack {
+    .experience-header {
       display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
       flex-wrap: wrap;
       gap: 0.5rem;
+    }
+    
+    .experience-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .experience-date {
+      font-size: 0.9rem;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .experience-company {
+      font-size: 1rem;
+      color: var(--text-secondary);
       margin-bottom: 1rem;
     }
     
-    .tech-tag {
-      background: rgba(0, 245, 255, 0.2);
-      color: #00f5ff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.9rem;
-      border: 1px solid rgba(0, 245, 255, 0.3);
+    .experience-description {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    
+    .experience-description ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .experience-description li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    .experience-description li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.15);
+    }
+    
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+    
+    .project-icon {
+      font-size: 2rem;
+      color: var(--accent-cyan);
     }
     
     .project-links {
@@ -259,98 +347,164 @@
     }
     
     .project-link {
-      color: #00f5ff;
-      text-decoration: none;
-      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
       transition: all 0.3s ease;
     }
     
     .project-link:hover {
-      color: #ff00ff;
-      transform: translateX(5px);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
     }
     
-    /* Contact section */
-    .contact-section {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      padding: 5rem 2rem;
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
     }
     
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .form-group {
+    .project-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
       margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
     
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 10px;
-      color: white;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #00f5ff;
-      box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
-    }
-    
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: #888;
-    }
-    
-    .social-links {
+    .tech-stack {
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     
-    .social-link {
-      color: white;
-      font-size: 2rem;
+    .tech-tag {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.3rem 0.8rem;
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: 4px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+    
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.5rem;
       transition: all 0.3s ease;
     }
     
-    .social-link:hover {
-      color: #00f5ff;
-      transform: translateY(-3px);
+    .skill-category:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+    
+    .skill-category h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .skill-item {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 0.4rem 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
     }
     
     /* Footer */
     footer {
-      background: #0a0a0a;
-      color: #888;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
       text-align: center;
-      padding: 2rem;
     }
     
-    /* Responsive design */
+    .footer-content {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      color: var(--accent-cyan);
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+    
+    .scroll-indicator i {
+      font-size: 1.5rem;
+      color: var(--accent-cyan);
+    }
+    
+    /* Responsive */
     @media (max-width: 768px) {
-      #header h1 {
-        font-size: 2.5rem;
+      .section {
+        padding: 4rem 0;
       }
       
-      .subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .cta-buttons {
+      .cta-group {
         flex-direction: column;
         align-items: center;
       }
       
-      .skills-grid,
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+      }
+      
       .projects-grid {
         grid-template-columns: 1fr;
       }
@@ -358,173 +512,315 @@
   </style>
 </head>
 <body>
-  <!-- Animated particles -->
-  <div class="particle" style="width: 4px; height: 4px; left: 10%; animation-delay: 0s; animation-duration: 15s;"></div>
-  <div class="particle" style="width: 6px; height: 6px; left: 20%; animation-delay: 2s; animation-duration: 18s;"></div>
-  <div class="particle" style="width: 3px; height: 3px; left: 30%; animation-delay: 4s; animation-duration: 20s;"></div>
-  <div class="particle" style="width: 5px; height: 5px; left: 40%; animation-delay: 6s; animation-duration: 16s;"></div>
-  <div class="particle" style="width: 4px; height: 4px; left: 50%; animation-delay: 8s; animation-duration: 19s;"></div>
-  <div class="particle" style="width: 6px; height: 6px; left: 60%; animation-delay: 10s; animation-duration: 17s;"></div>
-  <div class="particle" style="width: 3px; height: 3px; left: 70%; animation-delay: 12s; animation-duration: 21s;"></div>
-  <div class="particle" style="width: 5px; height: 5px; left: 80%; animation-delay: 14s; animation-duration: 15s;"></div>
-  <div class="particle" style="width: 4px; height: 4px; left: 90%; animation-delay: 16s; animation-duration: 18s;"></div>
-
   <!-- Hero Section -->
-  <div class="hero-bg">
-    <div id="header">
-      <div class="logo">
-        <i class="fas fa-code"></i>
-      </div>
-      <h1>Ashraful Islam</h1>
-      <p class="subtitle">Software Developer Intern @ Gainwell Technologies<br />
-        CS Major @ UTD · AI Fellow @ Headstarter AI<br />
-        Passionate about Healthcare IT & AI/ML Solutions</p>
-      
-      <div class="cta-buttons">
-        <a href="#projects" class="btn">View My Work</a>
-        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Skills Section -->
-  <div class="content-section" id="skills">
+  <section class="hero">
     <div class="container">
-      <h2 class="section-title">What I Do</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3><i class="fas fa-heartbeat"></i> Healthcare IT</h3>
-          <p>Developing innovative solutions to improve healthcare through technology at Gainwell Technologies. Focus on building systems that enhance patient care and streamline healthcare operations.</p>
+      <div class="hero-content">
+        <div class="hero-label">Software Developer</div>
+        <h1>Ashraful Islam</h1>
+        <p class="hero-subtitle">
+          <strong>MS CS Student @ UTD</strong> | Former SWE Intern @ Gainwell Technologies | AI Fellow @ Headstarter AI<br/>
+          Building intelligent systems and healthcare IT solutions
+        </p>
+        
+        <div class="cta-group">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fas fa-code"></i> View Projects
+          </a>
+          <a href="#experience" class="btn btn-secondary">
+            <i class="fas fa-briefcase"></i> Experience
+          </a>
         </div>
-        <div class="skill-card">
-          <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
-          <p>Creating intelligent applications through AI Fellowship at Headstarter AI. Passionate about leveraging machine learning to solve real-world problems and deliver impactful solutions.</p>
-        </div>
-        <div class="skill-card">
-          <h3><i class="fas fa-code"></i> Full-Stack Development</h3>
-          <p>Building end-to-end applications with modern technologies. Experience across the full stack from responsive frontends to robust backend systems and database design.</p>
-        </div>
-        <div class="skill-card">
-          <h3><i class="fas fa-mobile-alt"></i> UI/UX Design</h3>
-          <p>Creating intuitive and visually appealing user interfaces. Combining technical skills with design thinking to build experiences that users love and businesses need.</p>
-        </div>
-        <div class="skill-card">
-          <h3><i class="fas fa-users"></i> Leadership & Service</h3>
-          <p>Committed to utilizing my talents to benefit society through excellent leadership, service, and innovative IT solutions. Always looking for ways to make a positive impact.</p>
-        </div>
-        <div class="skill-card">
-          <h3><i class="fas fa-graduation-cap"></i> Continuous Learning</h3>
-          <p>Lifelong learner constantly exploring new technologies and methodologies. Currently pursuing Computer Science at UTD with focus on software systems and intelligent systems.</p>
+        
+        <div class="social-links">
+          <a href="https://github.com/AI01010" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ashraful-islam-cs/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://devpost.com/AI01010" class="social-link" target="_blank" rel="noopener" aria-label="Devpost">
+            <i class="fas fa-trophy"></i>
+          </a>
         </div>
       </div>
     </div>
-  </div>
+    
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Professional Journey</div>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      
+      <div class="experience-grid">
+        <div class="experience-card">
+          <div class="experience-header">
+            <div>
+              <h3 class="experience-title">Software Developer Intern</h3>
+              <p class="experience-company">Gainwell Technologies LLC · Irving, TX</p>
+            </div>
+            <span class="experience-date">May 2025 – Aug 2025</span>
+          </div>
+          <div class="experience-description">
+            <ul>
+              <li>Led a cross-functional team of 8 to develop 30+ Power BI dashboards for company SAP, SOC 1, and ITGC data logs to automate risk monitoring and ensure data compliance readiness</li>
+              <li>Won 1st place against 11 teams in the cross-functional intern teams competition</li>
+              <li>Produced a 50-page onboarding/setup manual adopted as the team's standard documentation</li>
+              <li>Collaborated with senior developers and business analysts using C#.NET, SQL Server, and Azure DevOps to maintain TX/OH enterprise PBM applications</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-card">
+          <div class="experience-header">
+            <div>
+              <h3 class="experience-title">Software Engineer</h3>
+              <p class="experience-company">Headstarter AI · Remote</p>
+            </div>
+            <span class="experience-date">Jul 2024 – Sep 2024</span>
+          </div>
+          <div class="experience-description">
+            <ul>
+              <li>Directed a team of 4 to deliver 4 full-stack apps in weekly sprints through agile workflows and code reviews</li>
+              <li>Developed AI flashcard generator, hotel support chatbot, RAG-based RateMyProfessor, and cloud-based inventory management system</li>
+              <li>Integrated Gemini AI API, Clerk API, Stripe API, Firebase DB, and deployed on Vercel</li>
+              <li>Demoed fellowship projects for company review and feedback on professional development</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Projects Section -->
-  <div class="content-section" id="projects">
+  <section class="section" id="projects">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
+      <div class="section-header">
+        <div class="section-label">Featured Work</div>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-description">
+          Building innovative solutions across AI/ML, full-stack development, and healthcare IT
+        </p>
+      </div>
+      
       <div class="projects-grid">
         <div class="project-card">
-          <h4>Healthcare IT Solutions</h4>
-          <p>Developing innovative healthcare technology solutions during my internship at Gainwell Technologies, focusing on improving patient care and operational efficiency.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">Healthcare IT</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">SQL</span>
-            <span class="tech-tag">Cloud</span>
+          <div class="project-header">
+            <i class="fas fa-award project-icon"></i>
+            <div class="project-links">
+              <a href="https://devpost.com/software/autis-casp" class="project-link" target="_blank" rel="noopener">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="#" class="project-link">Learn More →</a>
+          <h3 class="project-title">Autis(CASP) - 1st Place HackReason</h3>
+          <p class="project-description">
+            User-friendly, logic-based autism screening AI chatbot. Led design on a research-backed screening tool evaluating 7 core symptoms and DSM-5 criteria. Integrated s(CASP) with Python and Gemini AI to deliver explainable, medically grounded responses.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">s(CASP)</span>
+            <span class="tech-tag">Prolog</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Gemini AI</span>
           </div>
         </div>
+        
         <div class="project-card">
-          <h4>AI-Powered Applications</h4>
-          <p>Building cutting-edge AI applications through Headstarter AI Fellowship, delivering real-world impact through intelligent automation and machine learning.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">AI/ML</span>
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">TensorFlow</span>
-            <span class="tech-tag">React</span>
+          <div class="project-header">
+            <i class="fas fa-brain project-icon"></i>
+            <div class="project-links">
+              <a href="https://github.com/AI01010" class="project-link" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/AI01010" class="project-link">View Code →</a>
+          <h3 class="project-title">360° VR Attention ML Prediction System</h3>
+          <p class="project-description">
+            Built scalable ML system to predict user head direction in 360° VR by fusing visual, motion, and audio saliency. Implemented FoV CNN-prediction model to reduce streaming bandwidth. Engineered pipeline over 40B spatiotemporal data samples, achieving 50.6% validation accuracy.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">CNN</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">ML</span>
           </div>
         </div>
+        
         <div class="project-card">
-          <h4>Full-Stack Web Applications</h4>
-          <p>Developing modern web applications with focus on user experience, performance, and scalability. From concept to deployment.</p>
+          <div class="project-header">
+            <i class="fas fa-gem project-icon"></i>
+            <div class="project-links">
+              <a href="https://github.com/AI01010" class="project-link" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Luxury Jewelry E-Commerce Platform</h3>
+          <p class="project-description">
+            Led development on scalable, full-stack e-commerce platform featuring product collections, shopping cart, and secure multi-option checkout (Stripe, Zelle, Bank wire). Optimized performance by 28% through Next.js and Tailwind CSS image tuning. Implemented Prisma DB schemas for catalog and purchase operations.
+          </p>
           <div class="tech-stack">
+            <span class="tech-tag">Next.js</span>
             <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">TypeScript</span>
             <span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">Prisma</span>
+            <span class="tech-tag">Stripe API</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/AI01010" class="project-link">Explore →</a>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-database project-icon"></i>
+            <div class="project-links">
+              <a href="https://github.com/AI01010" class="project-link" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">T.R. Hoover CDC Data Management System</h3>
+          <p class="project-description">
+            Built Nuxt/Vue.js full-stack internal data management app with central database for grant reporting. Designed scalable Prisma schema for member PII (100-300+ per event), attendance, and volunteer/admin data. Developed intuitive UI for quick member check-in and demoed to sponsor with perfect rating.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Nuxt.js</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">Prisma</span>
+            <span class="tech-tag">SQLite</span>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-robot project-icon"></i>
+            <div class="project-links">
+              <a href="https://github.com/AI01010" class="project-link" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">AI-Powered Applications Suite</h3>
+          <p class="project-description">
+            Developed AI flashcard generator for adaptive learning, hotel support chatbot with natural language processing, RAG-based RateMyProfessor for intelligent course recommendations, and cloud-based inventory management system. Integrated multiple AI APIs with modern full-stack architecture.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Gemini AI</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Clerk</span>
+            <span class="tech-tag">Stripe</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Contact Section -->
-  <div class="contact-section" id="contact">
+  <!-- Skills Section -->
+  <section class="section" id="skills">
     <div class="container">
-      <h2 class="section-title">Let's Connect</h2>
-      <p style="text-align: center; color: #b0b0b0; margin-bottom: 3rem; font-size: 1.2rem;">
-        Ready to collaborate on innovative projects or discuss opportunities? I'd love to hear from you!
-      </p>
+      <div class="section-header">
+        <div class="section-label">Technical Expertise</div>
+        <h2 class="section-title">Skills</h2>
+      </div>
       
-      <form class="contact-form" method="post" action="#">
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required />
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-list">
+            <span class="skill-item">Java</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">C/C++</span>
+            <span class="skill-item">C#</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">TypeScript</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">HTML/CSS</span>
+          </div>
         </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" required />
+        
+        <div class="skill-category">
+          <h3>Frameworks & Libraries</h3>
+          <div class="skill-list">
+            <span class="skill-item">React.js</span>
+            <span class="skill-item">Next.js</span>
+            <span class="skill-item">Vue.js</span>
+            <span class="skill-item">Nuxt.js</span>
+            <span class="skill-item">ASP.NET Core</span>
+            <span class="skill-item">.NET</span>
+            <span class="skill-item">Tailwind CSS</span>
+            <span class="skill-item">PyTorch</span>
+            <span class="skill-item">NumPy</span>
+            <span class="skill-item">Pandas</span>
+          </div>
         </div>
-        <div class="form-group">
-          <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+        
+        <div class="skill-category">
+          <h3>Databases</h3>
+          <div class="skill-list">
+            <span class="skill-item">MySQL</span>
+            <span class="skill-item">MS SQL Server</span>
+            <span class="skill-item">MongoDB</span>
+            <span class="skill-item">SQLite</span>
+            <span class="skill-item">Firebase</span>
+            <span class="skill-item">Prisma</span>
+          </div>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+        
+        <div class="skill-category">
+          <h3>Tools & Platforms</h3>
+          <div class="skill-list">
+            <span class="skill-item">Git/GitHub</span>
+            <span class="skill-item">Azure DevOps</span>
+            <span class="skill-item">Vercel</span>
+            <span class="skill-item">Power BI</span>
+            <span class="skill-item">Visual Studio</span>
+            <span class="skill-item">AI/Cloud APIs</span>
+          </div>
         </div>
-      </form>
-
-      <div class="social-links">
-        <a href="https://github.com/AI01010" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/ashraful-islam-cs/" class="social-link"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:ashraful@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2024 Ashraful Islam. All rights reserved. | Designed with ❤️ for innovation</p>
+      <div class="footer-content">
+        <p>&copy; 2025 Ashraful Islam. Built with dedication and code.</p>
+        <div class="footer-links">
+          <a href="https://github.com/AI01010" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ashraful-islam-cs/" class="footer-link" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://devpost.com/AI01010" class="footer-link" target="_blank" rel="noopener">Devpost</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
-    // Smooth scrolling for navigation links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
 
-    // Add scroll-triggered animations
+    // Intersection Observer for fade-in animations
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -536,74 +832,25 @@
       });
     }, observerOptions);
 
-    // Observe all cards for animation
-    document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+    // Observe cards
+    document.querySelectorAll('.experience-card, .project-card, .skill-category').forEach(card => {
       card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'all 0.6s ease';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(card);
     });
 
-    // Form submission handler
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(this);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const message = formData.get('message');
-      
-      // Simple form validation
-      if (!name || !email || !message) {
-        alert('Please fill in all fields');
-        return;
+    // Hide scroll indicator on scroll
+    let scrolled = false;
+    window.addEventListener('scroll', () => {
+      if (!scrolled && window.scrollY > 100) {
+        const indicator = document.querySelector('.scroll-indicator');
+        if (indicator) {
+          indicator.style.opacity = '0';
+          scrolled = true;
+        }
       }
-      
-      // Simulate form submission
-      const submitBtn = this.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-      
-      setTimeout(() => {
-        submitBtn.textContent = 'Message Sent!';
-        submitBtn.style.background = 'linear-gradient(45deg, #00ff00, #00cc00)';
-        
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.style.background = 'linear-gradient(45deg, #00f5ff, #0080ff)';
-          submitBtn.disabled = false;
-          this.reset();
-        }, 2000);
-      }, 1000);
     });
-
-    // Add dynamic particle generation
-    function createParticle() {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.cssText = `
-        position: fixed;
-        width: ${Math.random() * 4 + 2}px;
-        height: ${Math.random() * 4 + 2}px;
-        left: ${Math.random() * 100}%;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        pointer-events: none;
-        animation: float ${Math.random() * 10 + 15}s infinite linear;
-        animation-delay: ${Math.random() * 5}s;
-      `;
-      document.body.appendChild(particle);
-      
-      setTimeout(() => {
-        particle.remove();
-      }, 25000);
-    }
-
-    // Generate particles periodically
-    setInterval(createParticle, 3000);
   </script>
 </body>
 </html>
